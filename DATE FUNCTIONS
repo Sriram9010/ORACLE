@@ -1,0 +1,357 @@
+SQL> select to_char(sysdate,'DAY MONTH YYYY') from dual;
+
+TO_CHAR(SYSDATE,'DAYMONTHYYYY')
+------------------------------------------------------------------------------
+TUESDAY   DECEMBER  2025
+
+SQL> select to_char(sysdate,'day')from dual;
+
+TO_CHAR(SYSDATE,'DAY')
+------------------------------------
+tuesday
+
+SQL> select*from emp where to_char(hiredate,
+  2
+SQL>
+SQL>
+SQL> select*from emp where to_char(hiredate,'yyyy')= 1981;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300
+        30
+
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500
+        30
+
+      7566 JONES      MANAGER         7839 02-APR-81       2975
+        20
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400
+        30
+
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850
+        30
+
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450
+        10
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7839 KING       PRESIDENT            17-NOV-81       5000
+        10
+
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0
+        30
+
+      7900 JAMES      CLERK           7698 03-DEC-81        950
+        30
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7902 FORD       ANALYST         7566 03-DEC-81       3000
+        20
+
+
+10 rows selected.
+
+SQL> set pages 200 lines 100
+SQL> select*from emp where to_char(hiredate,'yyyy')= 1981;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300     30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500     30
+      7566 JONES      MANAGER         7839 02-APR-81       2975                20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400     30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                10
+      7839 KING       PRESIDENT            17-NOV-81       5000                10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0     30
+      7900 JAMES      CLERK           7698 03-DEC-81        950                30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                20
+
+10 rows selected.
+
+SQL> set pages 200 lines 200
+SQL> select*from emp where to_char(hiredate,'yyyy')= 1981;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300     30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500     30
+      7566 JONES      MANAGER         7839 02-APR-81       2975                20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400     30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                10
+      7839 KING       PRESIDENT            17-NOV-81       5000                10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0     30
+      7900 JAMES      CLERK           7698 03-DEC-81        950                30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                20
+
+10 rows selected.
+
+SQL> SELECT ename, hiredate,TO_CHAR(hiredate, 'YYYY') AS year FROM emp;
+
+ENAME      HIREDATE  YEAR
+---------- --------- ----
+SMITH      17-DEC-80 1980
+ALLEN      20-FEB-81 1981
+WARD       22-FEB-81 1981
+JONES      02-APR-81 1981
+MARTIN     28-SEP-81 1981
+BLAKE      01-MAY-81 1981
+CLARK      09-JUN-81 1981
+SCOTT      09-DEC-82 1982
+KING       17-NOV-81 1981
+TURNER     08-SEP-81 1981
+ADAMS      12-JAN-83 1983
+JAMES      03-DEC-81 1981
+FORD       03-DEC-81 1981
+MILLER     23-JAN-82 1982
+
+14 rows selected.
+
+SQL> SELECT ename, hiredate,TO_CHAR(hiredate, 'YYYY') FROM emp;
+
+ENAME      HIREDATE  TO_C
+---------- --------- ----
+SMITH      17-DEC-80 1980
+ALLEN      20-FEB-81 1981
+WARD       22-FEB-81 1981
+JONES      02-APR-81 1981
+MARTIN     28-SEP-81 1981
+BLAKE      01-MAY-81 1981
+CLARK      09-JUN-81 1981
+SCOTT      09-DEC-82 1982
+KING       17-NOV-81 1981
+TURNER     08-SEP-81 1981
+ADAMS      12-JAN-83 1983
+JAMES      03-DEC-81 1981
+FORD       03-DEC-81 1981
+MILLER     23-JAN-82 1982
+
+14 rows selected.
+
+SQL> SELECT ename, hiredate,TO_CHAR(hiredate, 'YYYY') AS year FROM emp;
+
+ENAME      HIREDATE  YEAR
+---------- --------- ----
+SMITH      17-DEC-80 1980
+ALLEN      20-FEB-81 1981
+WARD       22-FEB-81 1981
+JONES      02-APR-81 1981
+MARTIN     28-SEP-81 1981
+BLAKE      01-MAY-81 1981
+CLARK      09-JUN-81 1981
+SCOTT      09-DEC-82 1982
+KING       17-NOV-81 1981
+TURNER     08-SEP-81 1981
+ADAMS      12-JAN-83 1983
+JAMES      03-DEC-81 1981
+FORD       03-DEC-81 1981
+MILLER     23-JAN-82 1982
+
+14 rows selected.
+
+SQL> SELECT ename, hiredate,TO_CHAR(hiredate, 'month') = 'december';
+SELECT ename, hiredate,TO_CHAR(hiredate, 'month') = 'december'
+                                                  *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> SELECT ename, hiredate,TO_CHAR(hiredate, 'mon') = 'DEC';
+SELECT ename, hiredate,TO_CHAR(hiredate, 'mon') = 'DEC'
+                                                *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> select*from emp where to_char(hiredate,'MONTH')= 'DECEMBER';
+
+no rows selected
+
+SQL> select*from emp where to_char(hiredate,'MON')= 'DEC';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+
+SQL> select*from emp where to_char(hiredate,'YYYY') IN ('1980','1982','1984');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+SQL> select*from emp where to_char(hiredate,'MM') IN '02';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+
+SQL> select*from emp where to_char(hiredate,'MM') IN ('01','02','03');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+SQL> select*from emp where to_char(hiredate,'MM') IN ('01','03','12');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+6 rows selected.
+
+SQL> select*from emp where to_char(hiredate,'MONYYYY') = 'DEC1981';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+
+SQL> select*from emp where to_char(hiredate,'QQYYYY') = '131981';
+
+no rows selected
+
+SQL> select*from emp where to_char(hiredate,'Q') = ('1','4');
+select*from emp where to_char(hiredate,'Q') = ('1','4')
+                                            *
+ERROR at line 1:
+ORA-01797: this operator must be followed by ANY or ALL
+
+
+SQL> select*from emp where to_char(hiredate,'Q') = ('1','4');
+select*from emp where to_char(hiredate,'Q') = ('1','4')
+                                            *
+ERROR at line 1:
+ORA-01797: this operator must be followed by ANY or ALL
+
+
+SQL> select*from emp where to_char(hiredate,'Q') IN ('1','4');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+9 rows selected.
+
+SQL>  SELECT *FROM emp WHERE TO_CHAR(hiredate, 'YYYY') = '1981' AND TO_CHAR(hiredate, 'Q') = '1';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+
+SQL> SELECT ename,hiredate,TO_CHAR(hiredate, 'DAY') AS day_join FROM emp;
+
+ENAME      HIREDATE  DAY_JOIN
+---------- --------- ------------------------------------
+SMITH      17-DEC-80 WEDNESDAY
+ALLEN      20-FEB-81 FRIDAY
+WARD       22-FEB-81 SUNDAY
+JONES      02-APR-81 THURSDAY
+MARTIN     28-SEP-81 MONDAY
+BLAKE      01-MAY-81 FRIDAY
+CLARK      09-JUN-81 TUESDAY
+SCOTT      09-DEC-82 THURSDAY
+KING       17-NOV-81 TUESDAY
+TURNER     08-SEP-81 TUESDAY
+ADAMS      12-JAN-83 WEDNESDAY
+JAMES      03-DEC-81 THURSDAY
+FORD       03-DEC-81 THURSDAY
+MILLER     23-JAN-82 SATURDAY
+
+14 rows selected.
+
+SQL> SELECT *FROM emp WHERE TO_CHAR(hiredate, 'FMDAY') = 'SUNDAY';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+
+SQL> SELECT *FROM emp WHERE MOD(TO_CHAR(hiredate, 'YYYY'), 4) = 0;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+
+SQL> SELECT ename,TO_CHAR(hiredate, 'DD/MM/YYYY') AS india_date FROM emp;
+
+ENAME      INDIA_DATE
+---------- ----------
+SMITH      17/12/1980
+ALLEN      20/02/1981
+WARD       22/02/1981
+JONES      02/04/1981
+MARTIN     28/09/1981
+BLAKE      01/05/1981
+CLARK      09/06/1981
+SCOTT      09/12/1982
+KING       17/11/1981
+TURNER     08/09/1981
+ADAMS      12/01/1983
+JAMES      03/12/1981
+FORD       03/12/1981
+MILLER     23/01/1982
+
+14 rows selected.
+
+SQL> SELECT ename,TO_CHAR(hiredate, 'MM/DD/YYYY') AS US_date FROM emp;
+
+ENAME      US_DATE
+---------- ----------
+SMITH      12/17/1980
+ALLEN      02/20/1981
+WARD       02/22/1981
+JONES      04/02/1981
+MARTIN     09/28/1981
+BLAKE      05/01/1981
+CLARK      06/09/1981
+SCOTT      12/09/1982
+KING       11/17/1981
+TURNER     09/08/1981
+ADAMS      01/12/1983
+JAMES      12/03/1981
+FORD       12/03/1981
+MILLER     01/23/1982
+
+14 rows selected.
+
+SQL>
