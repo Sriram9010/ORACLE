@@ -1,0 +1,371 @@
+
+SQL> SELECT * FROM TERRITORY;
+
+TERRITORYID TERRITORYDESCRIPTION        REGIONID
+----------- ------------------------- ----------
+       1581 WESTBORO                           1
+       1730 BEDFORD                            1
+       1833 GEORGETOWN                         4
+       2116 BOSTON                             4
+       2139 CAMBRIDGE                          2
+       2184 BRAINTREE                          2
+       2903 PROVIDENCE                         1
+       3801 HOLLIS                             3
+       3801 PORTSMOUTH                         3
+       6897 WILLTON                            2
+
+10 rows selected.
+
+
+SQL> select regionid,count(*) as no_of_territs from territory group by regionid order by regionid asc;
+
+  REGIONID NO_OF_TERRITS
+---------- -------------
+         1             3
+         2             3
+         3             2
+         4             2
+
+SQL> select regionid,count(*) as no_of_territs from territory group by regionid order by regionid desc;
+
+  REGIONID NO_OF_TERRITS
+---------- -------------
+         4             2
+         3             2
+         2             3
+         1             3
+
+SQL> ALTER TABLE emp
+  2  ADD id NUMBER;
+ADD id NUMBER
+    *
+ERROR at line 2:
+ORA-01430: column being added already exists in table
+
+
+SQL> SELECT*FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO         ID
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+14 rows selected.
+
+SQL> ALTER TABLE EMP ADD SPORT VARCHAR2(20);
+
+Table altered.
+
+SQL> SELECT*FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO         ID
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ----------
+SPORT
+--------------------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+
+
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+
+
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+
+
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+
+
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+
+
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+
+
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+
+
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20
+
+
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+
+
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+
+
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+
+
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+
+
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+
+
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+
+
+14 rows selected.
+
+SQL> SET PAGES 200 LINES 100;
+SQL> SELECT*FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO         ID
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ----------
+SPORT
+--------------------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+
+
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+
+
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+
+
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+
+
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+
+
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+
+
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+
+
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20
+
+
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+
+
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+
+
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+
+
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+
+
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+
+
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+
+
+14 rows selected.
+
+SQL> SET PAGES 200 LINES 200;
+SQL> SELECT*FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO         ID SPORT
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- --------------------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+14 rows selected.
+
+SQL> UPDATE emp
+  2  SET id = ROWNUM;
+
+14 rows updated.
+
+SQL> SELECT*FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO         ID SPORT
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- --------------------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20          1
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30          2
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30          3
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20          4
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30          5
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30          6
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10          7
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20          8
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10          9
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30         10
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20         11
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         12
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         13
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10         14
+
+14 rows selected.
+
+SQL> UPDATE emp SET id = 101 WHERE empno = 7369;
+
+1 row updated.
+
+SQL> UPDATE emp SET id = 102 WHERE empno = 7499;
+
+1 row updated.
+
+SQL> UPDATE emp SET id = 103 WHERE empno = 7521;
+
+1 row updated.
+
+SQL> -- Continue for others…
+SQL> SELECT*FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO         ID SPORT
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- --------------------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20        101
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30        102
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30        103
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20          4
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30          5
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30          6
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10          7
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20          8
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10          9
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30         10
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20         11
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         12
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         13
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10         14
+
+14 rows selected.
+
+SQL> ALTER TABLE EMP DROP COLUMN SPORT;L
+  2  ALTER TABLE EMP DROP COLUMN SPORT;
+ALTER TABLE EMP DROP COLUMN SPORT;L
+                                 *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> ALTER TABLE EMP DROP COLUMN SPORT;
+
+Table altered.
+
+SQL> SELECT*FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO         ID
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20        101
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30        102
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30        103
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20          4
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30          5
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30          6
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10          7
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20          8
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10          9
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30         10
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20         11
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         12
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         13
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10         14
+
+14 rows selected.
+
+SQL> SELECT FirstName, LastName, Age
+  2  FROM employees
+  3  WHERE Age > 25
+  4  ORDER BY ID ASC;
+FROM employees
+     *
+ERROR at line 2:
+ORA-00942: table or view does not exist
+
+
+SQL> SELECT FirstName, LastName, Age
+  2  FROM emp WHERE SAL > 1000 ORDER BY ID ASC;
+SELECT FirstName, LastName, Age
+                            *
+ERROR at line 1:
+ORA-00904: "AGE": invalid identifier
+
+
+SQL> SELECT FirstName, LastName, SAL
+  2  FROM emp WHERE SAL > 1000 ORDER BY ID ASC;
+SELECT FirstName, LastName, SAL
+                  *
+ERROR at line 1:
+ORA-00904: "LASTNAME": invalid identifier
+
+
+SQL> SELECT ENAME, JOB, SAL
+  2  FROM emp WHERE SAL > 1000 ORDER BY ID ASC;
+
+ENAME      JOB              SAL
+---------- --------- ----------
+JONES      MANAGER         2975
+MARTIN     SALESMAN        1250
+BLAKE      MANAGER         2850
+CLARK      MANAGER         2450
+SCOTT      ANALYST         3000
+KING       PRESIDENT       5000
+TURNER     SALESMAN        1500
+ADAMS      CLERK           1100
+FORD       ANALYST         3000
+MILLER     CLERK           1300
+ALLEN      SALESMAN        1600
+WARD       SALESMAN        1250
+
+12 rows selected.
+
+SQL> SELECT FirstName, LastName, SAL
+  2  FROM emp WHERE SAL > 1000 ORDER BY DEPNO ASC;
+FROM emp WHERE SAL > 1000 ORDER BY DEPNO ASC
+                                   *
+ERROR at line 2:
+ORA-00904: "DEPNO": invalid identifier
+
+
+SQL> SELECT FirstName, LastName, SAL
+  2  FROM emp WHERE SAL > 1000 ORDER BY DEPTNO ASC;
+SELECT FirstName, LastName, SAL
+                  *
+ERROR at line 1:
+ORA-00904: "LASTNAME": invalid identifier
+
+
+SQL> SELECT ENAME, JOB, SAL
+  2  FROM emp WHERE SAL > 1000 ORDER BY DEPTNO ASC;
+
+ENAME      JOB              SAL
+---------- --------- ----------
+CLARK      MANAGER         2450
+KING       PRESIDENT       5000
+MILLER     CLERK           1300
+FORD       ANALYST         3000
+JONES      MANAGER         2975
+SCOTT      ANALYST         3000
+ADAMS      CLERK           1100
+ALLEN      SALESMAN        1600
+WARD       SALESMAN        1250
+TURNER     SALESMAN        1500
+BLAKE      MANAGER         2850
+MARTIN     SALESMAN        1250
+
+12 rows selected.
+
+SQL>
