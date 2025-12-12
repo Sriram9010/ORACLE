@@ -1,4 +1,12 @@
 
+GROUP BY:- Group by clause is used to divide similar data items
+=========  into set of logical groups. And also group by clause    
+           reduces no of rows in each group.
+
+Syntax:-select columnname.......
+======  from tablename 
+        group by columnname;
+---------------------------------------
 SQL> SELECT * FROM TERRITORY;
 
 TERRITORYID TERRITORYDESCRIPTION        REGIONID
