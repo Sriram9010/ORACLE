@@ -1,0 +1,38 @@
+COGNIZANT Latest Interview Question:-
+===================================
+8.Write a SQL query to get the average review ratings for every product every month.
+
+in a recent Amazon data analyst interview, the candidate was given the reviews table,
+and asked to write a SQL query to get the average stars for each product every month
+
+The output should include the month in numerical value, product id, and average star rating
+rounded to two decimal places. Sort the output based on month followed by the product id.
+
+REVIEW_ID     USER_ID      SUBMIT_DATE       PRODUCT_ID     STARS
+--------     --------     ------------      -----------    ------
+ 6171           123        08-JUN-2022        50001          4
+ 7802           265        10-JUN-2022        69852          4
+ 5293           362        18-JUN-2022        50001          3
+ 6532           192        26-JUL-2022        69852          3
+ 4517           981        05-JUL-2022        69852          2
+
+
+EXPECTED OUTPUT:-
+---------------
+
+ MTH      PRODUCT          AVG_STARS
+------    ------------     ---------
+  6         50001             3.5      
+  6         69852             4
+  7         69852             2.5
+SELECT 
+    TO_NUMBER(TO_CHAR(submit_date, 'MM')) AS mth,
+    product_id,
+    ROUND(AVG(stars), 2) AS avg_stars
+FROM reviews
+GROUP BY 
+    TO_CHAR(submit_date, 'MM'),
+    product_id
+ORDER BY 
+    mth,
+    product_id;
