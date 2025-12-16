@@ -1,1 +1,110 @@
+JOINS:- Joins are used to retrieve data from  multiple tables. 
+ EQUI JOIN:-Based on equality operator we are retrieving data from multiple tables.
+========== Here joining conditional columns must belongs to same datatype.
 
+8i joins or NON ANSI joins syntax:-
+=================================
+select col1,col2.......
+from tablename1 , tablename2
+where tablename1.commoncolumnname= tablename2.Commoncolumnname;
+      --------------------------------------------------------
+                                 ||
+                                 ||
+                          (join condition)
+
+9i joins or ANSI JOINS syntax:-
+==============================
+Syntax:-
+========
+select col1,col2.......
+from tablename1 join tablename2
+on tablename1.commoncolumnname= tablename2.Commoncolumnname;
+   --------------------------------------------------------
+                               ||
+                               ||
+                         (join condition)
+
+============================
+ANSI
+-------------
+SQL> SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno;
+
+ENAME      DNAME
+---------- --------------
+SMITH      RESEARCH
+ALLEN      SALES
+WARD       SALES
+JONES      RESEARCH
+MARTIN     SALES
+BLAKE      SALES
+CLARK      ACCOUNTING
+SCOTT      RESEARCH
+KING       ACCOUNTING
+TURNER     SALES
+ADAMS      RESEARCH
+
+ENAME      DNAME
+---------- --------------
+JAMES      SALES
+FORD       RESEARCH
+MILLER     ACCOUNTING
+
+14 rows selected.
+--------------
+NON-ANSI
+-------------
+SQL> SELECT e.ename, d.dname
+  2  FROM emp e, dept d
+  3  WHERE e.deptno = d.deptno;
+---------------------------------------
+SQL> SELECT e.ename, d.loc
+  2  FROM emp e
+  3  JOIN dept d ON e.deptno = d.deptno;
+====================================================================================
+ENAME      LOC
+---------- -------------
+SMITH      DALLAS
+ALLEN      CHICAGO
+WARD       CHICAGO
+JONES      DALLAS
+MARTIN     CHICAGO
+BLAKE      CHICAGO
+CLARK      NEW YORK
+SCOTT      DALLAS
+KING       NEW YORK
+TURNER     CHICAGO
+ADAMS      DALLAS
+
+ENAME      LOC
+---------- -------------
+JAMES      CHICAGO
+FORD       DALLAS
+MILLER     NEW YORK
+
+14 rows selected.
+
+SQL> SELECT e.ename, d.loc
+  2  FROM emp e
+  3  JOIN dept d ON e.deptno = d.deptno
+  4  WHERE d.loc = 'CHICAGO';
+
+ENAME      LOC
+---------- -------------
+ALLEN      CHICAGO
+WARD       CHICAGO
+MARTIN     CHICAGO
+BLAKE      CHICAGO
+TURNER     CHICAGO
+JAMES      CHICAGO
+
+6 rows selected.
+-----------------
+NON ANSI
+---------------
+SELECT e.ename, d.loc
+FROM emp e, dept d
+WHERE e.deptno = d.deptno
+AND d.loc = 'CHICAGO';
+------------
+=====================================================================
+.
