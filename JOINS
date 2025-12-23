@@ -107,4 +107,149 @@ WHERE e.deptno = d.deptno
 AND d.loc = 'CHICAGO';
 ------------
 =====================================================================
-.
+SQL> -- STADIUM TABLE
+SQL> CREATE TABLE STADIUM (
+  2      STADIUM_ID NUMBER(10) PRIMARY KEY,
+  3      STADIUM_NAME VARCHAR2(20),
+  4      LOCATION VARCHAR2(20),
+  5      CAPACITY NUMBER(10)
+  6  );
+
+Table created.
+
+SQL>
+SQL> -- SEATCATEGORIES TABLE
+SQL> CREATE TABLE SEATCATEGORIES (
+  2      CATEGORY_ID NUMBER(10) PRIMARY KEY,
+  3      CATEGORY_NAME VARCHAR2(20),
+  4      PRICE NUMBER(10)
+  5  );
+
+Table created.
+
+SQL>
+SQL> -- SEATS TABLE
+SQL> CREATE TABLE SEATS (
+  2      STADIUM_ID NUMBER(10),
+  3      SEAT_NUMBER VARCHAR2(10),
+  4      CATEGORY_ID NUMBER(10),
+  5      CONSTRAINT fk_stadium
+  6          FOREIGN KEY (STADIUM_ID) REFERENCES STADIUM(STA_
+  7
+SQL>
+SQL> -- MASTER_USERS TABLE
+SQL> CREATE TABLE MASTER_USERS (
+  2      ID NUMBER(10) PRIMARY KEY,
+  3      FIRST_NAME VARCHAR2(15),
+  4      LAST_NAME VARCHAR2(15)
+  5  );
+
+Table created.
+
+SQL>
+SQL> -- HELP_REQUESTS TABLE
+SQL> CREATE TABLE HELP_REQUESTS (
+  2      REQUEST_ID NUMBER(10) PRIMARY KEY,
+  3      USER_ID NUMBER(10),
+  4      ISSUE VARCHAR2(30),
+  5      CONSTRAINT fk_user
+  6          FOREIGN KEY (USER_ID) REFERENCES MASTER_USERS(ID)
+  7  );
+
+Table created.
+
+SQL> SELECT s.seat_number AS SEATNO,
+  2         sc.category_name AS CATEGORYNAME
+  3  FROM stadium st
+  4  JOIN seats s
+  5    ON st.stadium_id = s.stadium_id
+  6  JOIN seatcategories sc
+  7    ON s.category_id = sc.category_id
+  8  WHERE st.stadium_name = 'EDEN GARDENS'
+  9  ORDER BY s.seat_number DESC;
+JOIN seats s
+     *
+ERROR at line 4:
+ORA-00942: table or view does not exist
+
+
+SQL> CREATE TABLE SEATS (
+  2      STADIUM_ID NUMBER(10),
+  3      SEAT_NUMBER VARCHAR2(10),
+  4      CATEGORY_ID NUMBER(10),
+  5      CONSTRAINT fk_stadium
+  6          FOREIGN KEY (STADIUM_ID) REFERENCES STADIUM(STADIUM_ID),
+  7      CONSTRAINT fk_category
+  8          FOREIGN KEY (CATEGORY_ID) REFERENCES SEATCATEGORIES(CATEGORY_ID)
+  9  );
+
+Table created.
+
+SQL> SELECT s.seat_number AS SEATNO,
+  2         sc.category_name AS CATEGORYNAME
+  3  FROM stadium st
+  4  JOIN seats s
+  5    ON st.stadium_id = s.stadium_id
+  6  JOIN seatcategories sc
+  7    ON s.category_id = sc.category_id
+  8  WHERE st.stadium_name = 'EDEN GARDENS'
+  9  ORDER BY s.seat_number DESC;
+
+no rows selected
+
+SQL> -- STADIUM DATA
+SQL> INSERT INTO STADIUM VALUES (1, 'EDEN GARDENS', 'KOLKATA', 66000);
+
+1 row created.
+
+SQL> INSERT INTO STADIUM VALUES (2, 'UPPAL', 'HYDERABAD', 55000);
+
+1 row created.
+
+SQL>
+SQL> -- SEATCATEGORIES DATA
+SQL> INSERT INTO SEATCATEGORIES VALUES (1, 'VIP', 5000);
+
+1 row created.
+
+SQL> INSERT INTO SEATCATEGORIES VALUES (2, 'PREMIUM', 3000);
+
+1 row created.
+
+SQL> INSERT INTO SEATCATEGORIES VALUES (3, 'GENERAL', 1500);
+
+1 row created.
+
+SQL>
+SQL> -- SEATS DATA
+SQL> INSERT INTO SEATS VALUES (1, 'A105', 2);
+
+1 row created.
+
+SQL> INSERT INTO SEATS VALUES (1, 'A110', 3);
+
+1 row created.
+
+SQL> INSERT INTO SEATS VALUES (1, 'A120', 1);
+
+1 row created.
+
+SQL> INSERT INTO SEATS VALUES (2, 'B101', 2);
+
+1 row created.
+
+SQL> SELECT s.seat_number AS SEATNO,
+  2         sc.category_name AS CATEGORYNAME
+  3  FROM stadium st
+  4  JOIN seats s
+  5    ON st.stadium_id = s.stadium_id
+  6  JOIN seatcategories sc
+  7    ON s.category_id = sc.category_id
+  8  WHERE st.stadium_name = 'EDEN GARDENS'
+  9  ORDER BY s.seat_number DESC;
+
+SEATNO     CATEGORYNAME
+---------- --------------------
+A120       VIP
+A110       GENERAL
+A105       PREMIUM
