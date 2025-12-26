@@ -1,0 +1,109 @@
+
+SQL> CREATE TABLE COURSES123 (
+  2      cid   NUMBER(5) PRIMARY KEY,
+  3      cname VARCHAR2(20) NOT NULL
+  4  );
+
+Table created.
+
+SQL> CREATE TABLE STUDENTS123 (
+  2      sid   NUMBER(5) PRIMARY KEY,
+  3      sname VARCHAR2(20) NOT NULL,
+  4      cid   NUMBER(5),
+  5      FOREIGN KEY (cid) REFERENCES COURSES123(cid)
+  6  );
+
+Table created.
+
+SQL> INSERT INTO COURSES123 VALUES (101, 'JAVA');
+
+1 row created.
+
+SQL> INSERT INTO COURSES123 VALUES (102, 'PYTHON');
+
+1 row created.
+
+SQL> INSERT INTO COURSES123 VALUES (103, 'SQL');
+
+1 row created.
+
+SQL> INSERT INTO STUDENTS123 VALUES (1, 'RAVI', 101);
+
+1 row created.
+
+SQL> INSERT INTO STUDENTS123 VALUES (2, 'SITA', 102);
+
+1 row created.
+
+SQL> INSERT INTO STUDENTS123 VALUES (3, 'KIRAN', 103);
+
+1 row created.
+
+SQL> CREATE TABLE DOCTORS (
+  2      DOCTORID  NUMBER(5) PRIMARY KEY,
+  3      DNAME     VARCHAR2(20),
+  4      SPECIALTY VARCHAR2(20)
+  5  );
+
+Table created.
+
+SQL> CREATE TABLE PATIENTS (
+  2      PATIENTID NUMBER(5) PRIMARY KEY,
+  3      PNAME     VARCHAR2(20),
+  4      DOCTORID  NUMBER(5),
+  5      FOREIGN KEY (DOCTORID) REFERENCES DOCTORS(DOCTORID)
+  6  );
+
+Table created.
+
+SQL> INSERT INTO DOCTORS VALUES (1, 'DR RAM', 'CARDIO');
+
+1 row created.
+
+SQL> INSERT INTO DOCTORS VALUES (2, 'DR SAI', 'NEURO');
+
+1 row created.
+
+SQL>
+SQL> INSERT INTO PATIENTS VALUES (101, 'RAJU', 1);
+
+1 row created.
+
+SQL> INSERT INTO PATIENTS VALUES (102, 'MEENA', 2);
+
+1 row created.
+
+SQL> CREATE TABLE EMP5 (
+  2      EMPNO   NUMBER(5) PRIMARY KEY,
+  3      ENAME   VARCHAR2(20) NOT NULL,
+  4      SAL     NUMBER(8,2) CHECK (SAL > 0),
+  5      MGRNO   NUMBER(5),
+  6      AGE     NUMBER(3) CHECK (AGE >= 18),
+  7      ADDRESS VARCHAR2(50) NOT NULL,
+  8      PHONO   NUMBER(10) UNIQUE,
+  9      FOREIGN KEY (MGRNO) REFERENCES EMP5(EMPNO)
+ 10  );
+
+Table created.
+
+SQL> select*from STUDENTS123;
+
+       SID SNAME                       CID
+---------- -------------------- ----------
+         1 RAVI                        101
+         2 SITA                        102
+         3 KIRAN                       103
+
+SQL> select*from COURSES123;
+
+       CID CNAME
+---------- --------------------
+       101 JAVA
+       102 PYTHON
+       103 SQL
+
+SQL> INSERT INTO COURSES123 VALUES (101, 'PYTHON');
+INSERT INTO COURSES123 VALUES (101, 'PYTHON')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C008336) violated
